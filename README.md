@@ -7,6 +7,9 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Heartbeat step
 * Peering algorithm (K nodes)
 * Basic communication between peers (e.g. broadcast, send, receive)
+* 
+##Libraries
+* https://github.com/priologic/easyrtc
 
 ###References
 * ```http://en.wikipedia.org/wiki/Overlay_network```
