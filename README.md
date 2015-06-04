@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+#  [![NPM version][npm-image]][npm-url] [![Build Status] [![Dependency Status][daviddm-image]][daviddm-url]
 
 > WebRTC based communication manager.
 
@@ -58,4 +58,4 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###References
 * ```http://en.wikipedia.org/wiki/Overlay_network```
 * ```http://katemats.com/distributed-systems-basics-handling-failure-fault-tolerance-and-monitoring/```
->>>>>>> 13f79197b9350fab98405eebda0459b8cc9a6372
+
