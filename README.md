@@ -57,4 +57,5 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###References
 * ```http://en.wikipedia.org/wiki/Overlay_network```
 * ```http://katemats.com/distributed-systems-basics-handling-failure-fault-tolerance-and-monitoring/```
+* https://github.com/yeoman/generator-node/blob/master/README.md
 
