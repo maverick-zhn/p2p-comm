@@ -1,4 +1,3 @@
-
 /**
  * Created by: Servio on 6/1/2015.
  * Source: Communicator.js
@@ -21,6 +20,25 @@ function Communicator() {
   //var self = this;
   this.selfEasyrtcid = "";
 
+  function connect(s, p) {
+    this.server = s;
+    this.port = p
+    //easyrtc.setPeerListener(addToConversation);
+    //easyrtc.setRoomOccupantListener(convertListToButtons);
+    //                   Application Name,         Success CB, Error CB
+    easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
+
+    function loginSuccess(easyrtcid) {
+      this.selfEasyrtcid = easyrtcid;
+      console.log("I am " + easyrtcid);
+    }
+
+    function loginFailure(errorCode, message) {
+      easyrtc.showError(errorCode, message);
+    }
+
+  };
+
 
 }
 
@@ -42,16 +60,16 @@ Communicator.prototype.connect = function (s, p) {
   //                   Application Name,         Success CB, Error CB
   easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
 
+  function loginSuccess(easyrtcid) {
+    this.selfEasyrtcid = easyrtcid;
+    console.log("I am " + easyrtcid);
+  }
+
+  function loginFailure(errorCode, message) {
+    easyrtc.showError(errorCode, message);
+  }
+
 };
-
-function loginSuccess(easyrtcid) {
-  selfEasyrtcid = easyrtcid;
-  console.log("I am " + easyrtcid);
-}
-
-function loginFailure(errorCode, message) {
-  easyrtc.showError(errorCode, message);
-}
 
 //TODO
 function convertListToButtons (roomName, occupants, isPrimary) {
@@ -76,8 +94,6 @@ function convertListToButtons (roomName, occupants, isPrimary) {
     console.log("Nobody else logged in to talk to...");
   }
 }
-
-
 
 /* extend the EventEmitter class using our Communication Manager class */
 util.inherits(Communicator, emitter);
