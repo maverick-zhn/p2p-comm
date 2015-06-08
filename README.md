@@ -15,7 +15,7 @@ $ npm install --save p2p-comm
 ```js
 var p2pComm = require('p2p-comm');
 
-p2pComm('Rainbow');
+p2pComm.connect('server', 'port');
 ```
 
 ```sh
@@ -23,10 +23,6 @@ $ npm install --global p2p-comm
 $ p2p-comm --help
 ```
 
-```sh
-# creates a browser.js
-$ npm run browser
-```
 
 
 ## License
