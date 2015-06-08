@@ -41,11 +41,30 @@ MIT © [Servio Palacios](http://www.maverick-z.com)
 NodeJS Communication Manager, Peer to Peer Basic communication
 
 ##TODO
-* Handshake step
-* RTT measure
-* Heartbeat step
-* Peering algorithm (K nodes)
-* Basic communication between peers (e.g. broadcast, send, receive)
+* ~~Read related papers~~
+* Get started with infrastructure and related repositories
+* Define basic handshake protocol using STUN/ICE, and RTP stack (Transport/Session)
+* Read ( - easyRTC signaling server details, - API http://www.easyrtc.com/docs/browser/easyrtc.php)
+* Implement Basic data channel communication between peers
+* Implement a data channel communication between peers using nodejs
+* Implement connect method in library
+* Implement send method in library
+* Implement receive method in library
+* Design and Implement Network Topology Actualization Algorithm
+* Create Benchmarking Module to measure the effectiveness of new updated topology
+* Document progress up to this checkpoint
+* Design and Implement K-Peer Communication Manager Algorithm
+* Define variables that are shared along all clients in a room
+* Implement connectivity between peers using rooms
+* Implement security using rooms' concept
+* Implement K-Peering algorithm using rooms' concept
+* Implement Broadcast, Send and Receive using Data Channel
+* Document progress up to this checkpoint
+* Create Module Template
+* Comply Google style guide, code revision
+* Create module, document module, upload to npm
+* Write this part of the paper
+* Verify with Writing Lab
  
 ##Libraries
 * https://github.com/priologic/easyrtc
