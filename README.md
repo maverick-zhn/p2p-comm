@@ -42,10 +42,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 
 ##TODO
 * ~~Read related papers~~
-* Get started with infrastructure and related repositories
-* Define basic handshake protocol using STUN/ICE, and RTP stack (Transport/Session)
-* Read ( - easyRTC signaling server details, - API http://www.easyrtc.com/docs/browser/easyrtc.php)
-* Implement Basic data channel communication between peers
+* ~~Get started with infrastructure and related repositories~~
+* ~~Define basic handshake protocol using STUN/ICE, and RTP stack (Transport/Session)~~
+* ~~Read ( - easyRTC signaling server details, - API http://www.easyrtc.com/docs/browser/easyrtc.php)~~
+* ~~Implement Basic data channel communication between peers~~
 * Implement a data channel communication between peers using nodejs
 * Implement connect method in library
 * Implement send method in library
@@ -60,7 +60,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Implement K-Peering algorithm using rooms' concept
 * Implement Broadcast, Send and Receive using Data Channel
 * Document progress up to this checkpoint
-* Create Module Template
+* ~~Create Module Template~~
 * Comply Google style guide, code revision
 * Create module, document module, upload to npm
 * Write this part of the paper
