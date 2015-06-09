@@ -70,12 +70,13 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://github.com/priologic/easyrtc
 
 ###References
-* ```http://en.wikipedia.org/wiki/Overlay_network```
-* ```http://katemats.com/distributed-systems-basics-handling-failure-fault-tolerance-and-monitoring/```
+* http://en.wikipedia.org/wiki/Overlay_network
+* http://katemats.com/distributed-systems-basics-handling-failure-fault-tolerance-and-monitoring/
 * https://github.com/yeoman/generator-node/blob/master/README.md
 * http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
 * http://en.wikipedia.org/wiki/Distributed_hash_table
 * http://nms.csail.mit.edu/ron/
+* http://www.smashingmagazine.com/2014/01/23/understanding-javascript-function-prototype-bind/
 
 ###module exports
 * http://stackoverflow.com/questions/10462223/call-a-local-function-within-module-exports-from-another-function-in-module-ex
