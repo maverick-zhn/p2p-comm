@@ -74,4 +74,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * ```http://katemats.com/distributed-systems-basics-handling-failure-fault-tolerance-and-monitoring/```
 * https://github.com/yeoman/generator-node/blob/master/README.md
 * http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+* http://en.wikipedia.org/wiki/Distributed_hash_table
+* 
+###module exports
+* http://stackoverflow.com/questions/10462223/call-a-local-function-within-module-exports-from-another-function-in-module-ex
+* http://stackoverflow.com/questions/22005002/node-js-typeerror-object-object-has-no-method-existssync
+* http://www.hacksparrow.com/node-js-exports-vs-module-exports.html
 
