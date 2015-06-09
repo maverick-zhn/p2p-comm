@@ -1,4 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status] [![Dependency Status][daviddm-image]][daviddm-url]
+#  [![NPM version][npm-image]][npm-url] [![Build Status] [daviddm-image]][![Dependency Status][daviddm-image]][daviddm-url]
 
 > WebRTC based communication manager.
 
