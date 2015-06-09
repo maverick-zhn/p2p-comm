@@ -76,6 +76,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
 * http://en.wikipedia.org/wiki/Distributed_hash_table
 * http://nms.csail.mit.edu/ron/
+* https://github.com/yang/sron
 * http://www.smashingmagazine.com/2014/01/23/understanding-javascript-function-prototype-bind/
 
 ###module exports
