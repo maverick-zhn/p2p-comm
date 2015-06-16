@@ -84,13 +84,19 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://github.com/yang/sron
 * http://www.smashingmagazine.com/2014/01/23/understanding-javascript-function-prototype-bind/
 * http://oboejs.com/why
+* http://phantomjs.org/
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
-* 
 
 ###WebRTC
 * https://webrtchacks.com/
+* http://webrtc.github.io/samples/
+* http://www.w3.org/TR/webrtc/
+* http://www.html5rocks.com/en/tutorials/webrtc/datachannels/
+* http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#how-can-i-build-a-signaling-service
+* http://chimera.labs.oreilly.com/books/1230000000545/ch18.html#_audio_and_video_engines
+* http://socket.io/docs/rooms-and-namespaces/
 
 ###Module exports
 * http://stackoverflow.com/questions/10462223/call-a-local-function-within-module-exports-from-another-function-in-module-ex
