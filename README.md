@@ -65,6 +65,11 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Create module, document module, upload to npm
 * Write this part of the paper
 * Verify with Writing Lab
+
+###Testing
+* https://ide.c9.io/maverikzhn/demo-project
+* https://golang.org/doc/install/source
+* https://gist.github.com/isaacs/579814
  
 ##Libraries
 * https://github.com/priologic/easyrtc
@@ -78,8 +83,16 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://nms.csail.mit.edu/ron/
 * https://github.com/yang/sron
 * http://www.smashingmagazine.com/2014/01/23/understanding-javascript-function-prototype-bind/
+* http://oboejs.com/why
 
-###module exports
+###Code, Stilying
+* http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
+* 
+
+###WebRTC
+* https://webrtchacks.com/
+
+###Module exports
 * http://stackoverflow.com/questions/10462223/call-a-local-function-within-module-exports-from-another-function-in-module-ex
 * http://stackoverflow.com/questions/22005002/node-js-typeerror-object-object-has-no-method-existssync
 * http://www.hacksparrow.com/node-js-exports-vs-module-exports.html
