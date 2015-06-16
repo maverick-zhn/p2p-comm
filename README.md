@@ -47,6 +47,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * ~~Read ( - easyRTC signaling server details, - API http://www.easyrtc.com/docs/browser/easyrtc.php)~~
 * ~~Implement Basic data channel communication between peers~~
 * Implement a data channel communication between peers using nodejs
+* ~~connect() method implementation using EasyRTC~~
 * Implement connect method in library
 * Implement send method in library
 * Implement receive method in library
