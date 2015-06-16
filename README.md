@@ -103,3 +103,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://stackoverflow.com/questions/22005002/node-js-typeerror-object-object-has-no-method-existssync
 * http://www.hacksparrow.com/node-js-exports-vs-module-exports.html
 
+###Network and Javascript assesments
+* http://code.jpardanaud.com/speedtest/
+* https://github.com/ddsol/speedtest.net
+
