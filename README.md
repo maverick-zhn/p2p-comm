@@ -99,6 +99,9 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://chimera.labs.oreilly.com/books/1230000000545/ch18.html#_audio_and_video_engines
 * http://socket.io/docs/rooms-and-namespaces/
 
+###Issues with WebRTC and EasyRTC
+* https://groups.google.com/forum/#!topic/easyrtc/XMsCpDMgaX4
+
 ###Module exports
 * http://stackoverflow.com/questions/10462223/call-a-local-function-within-module-exports-from-another-function-in-module-ex
 * http://stackoverflow.com/questions/22005002/node-js-typeerror-object-object-has-no-method-existssync
