@@ -74,6 +74,11 @@ NodeJS Communication Manager, Peer to Peer Basic communication
  
 ##Libraries
 * https://github.com/priologic/easyrtc
+* http://lynckia.com/licode/index.html
+* http://sourcey.com/symple/
+
+###Spark
+* http://www.cs.berkeley.edu/~rxin/
 
 ###References
 * http://en.wikipedia.org/wiki/Overlay_network
