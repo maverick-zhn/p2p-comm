@@ -79,6 +79,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 
 ###Spark
 * http://www.cs.berkeley.edu/~rxin/
+* https://databricks.com/blog/2015/01/15/improved-driver-fault-tolerance-and-zero-data-loss-in-spark-streaming.html
 
 ###References
 * http://en.wikipedia.org/wiki/Overlay_network
@@ -91,6 +92,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://www.smashingmagazine.com/2014/01/23/understanding-javascript-function-prototype-bind/
 * http://oboejs.com/why
 * http://phantomjs.org/
+* http://dcg.ethz.ch/lectures/podc_allstars/
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
@@ -102,6 +104,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://www.html5rocks.com/en/tutorials/webrtc/datachannels/
 * http://www.html5rocks.com/en/tutorials/webrtc/infrastructure/#how-can-i-build-a-signaling-service
 * http://chimera.labs.oreilly.com/books/1230000000545/ch18.html#_audio_and_video_engines
+* https://github.com/vmolsa/webrtc-native
 * http://socket.io/docs/rooms-and-namespaces/
 
 ###Issues with WebRTC and EasyRTC
