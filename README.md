@@ -71,6 +71,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://ide.c9.io/maverikzhn/demo-project
 * https://golang.org/doc/install/source
 * https://gist.github.com/isaacs/579814
+* http://pouchdb.com/getting-started.html
  
 ##Libraries
 * https://github.com/priologic/easyrtc
