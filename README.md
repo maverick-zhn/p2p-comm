@@ -80,6 +80,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###Spark
 * http://www.cs.berkeley.edu/~rxin/
 * https://databricks.com/blog/2015/01/15/improved-driver-fault-tolerance-and-zero-data-loss-in-spark-streaming.html
+* https://spark-summit.org/2014/training
 
 ###References
 * http://en.wikipedia.org/wiki/Overlay_network
