@@ -67,6 +67,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Write this part of the paper
 * Verify with Writing Lab
 
+###Signaling Server
+* http://blog.sococo.com/product/news-and-events/webrtc-signaling-here-be-dragons.html
+* Here are some problems with Socket.IO at high scale level.
+
 ###Testing
 * https://ide.c9.io/maverikzhn/demo-project
 * https://golang.org/doc/install/source
