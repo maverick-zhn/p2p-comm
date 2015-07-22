@@ -100,6 +100,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://phantomjs.org/
 * http://dcg.ethz.ch/lectures/podc_allstars/
 
+###Javascript
+* https://www.udemy.com/understand-javascript/#/lecture/2573912
+
+
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
 
