@@ -102,6 +102,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 
 ###Javascript
 * https://www.udemy.com/understand-javascript/#/lecture/2573912
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
 
 ###Code, Stilying
