@@ -104,6 +104,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://www.udemy.com/understand-javascript/#/lecture/2573912
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table
+* http://underscorejs.org/
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
