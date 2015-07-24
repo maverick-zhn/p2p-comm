@@ -109,6 +109,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://www.typescriptlang.org/
 * https://github.com/google/traceur-compiler
 * https://google.github.io/traceur-compiler/demo/repl.html#
+* https://github.com/lukehoban/es6features
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
