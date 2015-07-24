@@ -106,6 +106,9 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table
 * http://underscorejs.org/
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+* http://www.typescriptlang.org/
+* https://github.com/google/traceur-compiler
+* https://google.github.io/traceur-compiler/demo/repl.html#
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
