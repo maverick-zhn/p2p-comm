@@ -125,6 +125,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://chimera.labs.oreilly.com/books/1230000000545/ch18.html#_audio_and_video_engines
 * https://github.com/vmolsa/webrtc-native
 * http://socket.io/docs/rooms-and-namespaces/
+* ```https://github.com/muaz-khan/WebRTC-Experiment/blob/master/socket.io/PeerConnection.js```
 
 ###Issues with WebRTC and EasyRTC
 * https://groups.google.com/forum/#!topic/easyrtc/XMsCpDMgaX4
