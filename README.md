@@ -112,6 +112,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://github.com/lukehoban/es6features
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
 * http://www.sitepoint.com/understanding-module-exports-exports-node-js/
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
