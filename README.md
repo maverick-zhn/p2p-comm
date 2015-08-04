@@ -71,6 +71,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://blog.sococo.com/product/news-and-events/webrtc-signaling-here-be-dragons.html
 * Here are some problems with Socket.IO at high scale level.
 * https://github.com/spromano/WebRTC_Book
+* http://stackoverflow.com/questions/24153053/listing-all-the-clients-connected-to-a-room-in-socket-io-version-1
 
 ###Testing
 * https://ide.c9.io/maverikzhn/demo-project
