@@ -70,6 +70,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###Signaling Server
 * http://blog.sococo.com/product/news-and-events/webrtc-signaling-here-be-dragons.html
 * Here are some problems with Socket.IO at high scale level.
+* https://github.com/spromano/WebRTC_Book
 
 ###Testing
 * https://ide.c9.io/maverikzhn/demo-project
