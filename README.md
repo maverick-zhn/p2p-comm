@@ -131,6 +131,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://socket.io/docs/rooms-and-namespaces/
 * ```https://github.com/muaz-khan/WebRTC-Experiment/blob/master/socket.io/PeerConnection.js```
 * [Reserving Bandwidth] https://www.webrtcexample.com/blog/?go=all/reserving-bandwidth/
+* https://webrtchacks.com/
 
 ###Issues with WebRTC and EasyRTC
 * https://groups.google.com/forum/#!topic/easyrtc/XMsCpDMgaX4
