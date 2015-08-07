@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Transfer with DataChannel Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>     
+  <style>
+    li span {
+        margin-right: 1em;
+    }
+
+    progress {
+        margin-right: 1em;
+        width: 50%;
+    }
+
+    li .filename {
+        display: inline-block;
+        width: 50%;
+    }
+
+    .peerContainer {
+        margin-bottom: 1em;
+    }
+
+    .p2pChecking {
+        background-color: #ffeed7;
+    }
+    .p2pConnected, .p2pCompleted {
+        background-color: #e8f7ef;
+    }
+    .p2pFailed {
+        background-color: #ffe3eb
+    }
+    .p2pDisconnected {
+        background-color: #ffeed7;
+    }
+    .p2pClosed {
+        background-color: #f5f7f8;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container" id='mainDiv'>
+  <h2>File Transfer and Chat with DataChannel</h2>
+  <div id="Send">
+      <textarea rows="4" cols="60" id="dataChannelSend" disabled
+			placeholder="This will be enabled once the data channel is up..."></textarea>    
+  </div>
+  <div id="Receive">
+    <textarea rows="4" cols="60" id="dataChannelReceive" disabled></textarea>
+  </div>
+  <div>
+    <button id="sendButton" disabled>Send Message</button>
+  </div>        
+						
+</div>
+    
+<div class="container" id="divMain">  
+    <p>Signaling Server uses <strong>Socket.io</strong>, transactions are secure using <strong>DTLS</strong></p> 
+  <div class="progress" id="divProgressFather">
+      <!--style="width:40%"-->
+    <div id="progress_bar_wrap" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" >      
+    </div>
+  </div>
+  <div id="buttons">
+        <input id="click" type="button" value="Send File"/>
+  </div>  
+  <div>
+        <input id="browseFile" type="file" value="Browse file..."/>
+  </div>  
+</div>    
+
+<script src='/socket.io/socket.io.js'></script>
+<script src='js/lib/adapter.js'></script>
+<script src='js/completeNodeClientWithDataChannel.js'></script>
+<script type="text/javascript" src="progress_bar.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>

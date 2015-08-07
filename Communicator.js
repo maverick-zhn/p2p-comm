@@ -14,31 +14,19 @@ var emitter = require('events').EventEmitter; /* Event Emitter Module */
 var util = require('util'); /* NodeJS Utils Module */
 var easyrtc = require('easyrtc');
 //var selfEasyrtcid = "";
+var connectList = {};
+var channelIsActive = {}; // tracks which channels are active
+
 
 function Communicator() {
 
   //var self = this;
   this.selfEasyrtcid = "";
-
-  function connect(s, p) {
-    this.server = s;
-    this.port = p
-    //easyrtc.setPeerListener(addToConversation);
-    //easyrtc.setRoomOccupantListener(convertListToButtons);
-    //                   Application Name,         Success CB, Error CB
-    easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
-
-    function loginSuccess(easyrtcid) {
-      this.selfEasyrtcid = easyrtcid;
-      console.log("I am " + easyrtcid);
-    }
-
-    function loginFailure(errorCode, message) {
-      easyrtc.showError(errorCode, message);
-    }
-
-  };
-
+  this.test = "Prueba";
+  //easyrtc.maverick = "maverick";
+  //easyrtc.enableDebug(false);
+  //this.easyrtc.enableDebug(false);
+  easyrtc.enableDataChannels(true);
 
 }
 
@@ -52,19 +40,35 @@ Communicator.prototype.addToConversation = function(who, msgType, content) {
  * Connect to a remote server s in port p.
  * @param {s, p} server, port
  */
-Communicator.prototype.connect = function (s, p) {
-  this.server = s;
-  this.port = p
+Communicator.prototype.connect = function (server, port) {
+  this.server = server;
+  this.port = port;
+
+  console.log(easyrtc, server, port);
+
+  easyrtc.enableDebug(false);
+  easyrtc.enableDataChannels(true);
+  easyrtc.enableVideo(false);
+  easyrtc.enableAudio(false);
+  easyrtc.enableVideoReceive(false);
+  easyrtc.enableAudioReceive(false);
+  easyrtc.setDataChannelOpenListener(openListener);
+  easyrtc.setDataChannelCloseListener(closeListener);
   easyrtc.setPeerListener(addToConversation);
   easyrtc.setRoomOccupantListener(convertListToButtons);
-  //                   Application Name,         Success CB, Error CB
-  easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
+  easyrtc.connect("easyrtc.dataMessaging", loginSuccess, loginFailure);
+  //easyrtc.setPeerListener(addToConversation);
+  //easyrtc.setRoomOccupantListener(convertListToButtons);
+  //              Application Name,         Success CB, Error CB
+  //easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
 
+  //Success Callback
   function loginSuccess(easyrtcid) {
     this.selfEasyrtcid = easyrtcid;
     console.log("I am " + easyrtcid);
   }
 
+  //Failure CallBack
   function loginFailure(errorCode, message) {
     easyrtc.showError(errorCode, message);
   }
@@ -95,7 +99,7 @@ function convertListToButtons (roomName, occupants, isPrimary) {
   }
 }
 
-/* extend the EventEmitter class using our Communication Manager class */
-util.inherits(Communicator, emitter);
-/* we specify that this module is a reference to the Communication Manager class */
+/* extend the EventEmitter class using our Communicator class */
+//util.inherits(Communicator, emitter);
+/* we specify that this module is a reference to the Communicator class */
 module.exports = Communicator;
