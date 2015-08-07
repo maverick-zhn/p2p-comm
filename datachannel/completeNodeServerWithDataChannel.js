@@ -1,3 +1,10 @@
+/* In God we trust
+* Signaling Server with socket.io
+* Made by: Servio Palacios
+* Date: 2015.08.05
+*/
+
+var port = 8181;
 var static = require('node-static');
 var http = require('http');
 // Create a node-static server instance
@@ -7,13 +14,17 @@ var file = new(static.Server)();
 // rely on our instance of node-static to serve the files
 var app = http.createServer(function (req, res) {
   file.serve(req, res);
-}).listen(8181);
+}).listen(port);
 
 // Use socket.io JavaScript library for real-time web applications
+// TODO 
+// Use SocketCLuster
 var io = require('socket.io').listen(app);
 var globalChannel = "";
 
-// Let's start managing connections...
+console.log("Listening on port: [" + port + "]");
+
+// Managing connections on the socket ...
 io.sockets.on('connection', function (socket){
 	
     	// Handle 'message' messages
