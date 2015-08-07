@@ -1,29 +1,38 @@
 window.onload = function(){
     var bar = new progress_bar();
-    
-    /*var bar = document.getElementById('progress_bar_wrap');    
-    
-    bar.setPercentage = function(percentage){        
-        bar.style.width = percentage + '%';    
+
+    /*var bar = document.getElementById('progress_bar_wrap');
+
+    bar.setPercentage = function(percentage){
+        bar.style.width = percentage + '%';
     }*/
-    
+
     container = document.getElementById('buttons');
-    
+
+    // Progress Bar
+    var bar = document.getElementById('progress_bar_wrap');
+    var text = document.createElement('div');
+
+    bar.style.width  = '0%';
+    text.style.textAlign = 'center';
+    text.appendChild(document.createTextNode('0%'));
+    bar.appendChild(text);
+
     // show the peer id
     var buttons = document.createElement('div');
     buttons.className = 'Actions';
     buttons.appendChild(document.createTextNode('Peer ID:'));
     container.appendChild(buttons);
-            
+
     // show a list of files received / sending
     var filelist = document.createElement('ul');
     filelist.className = 'fileList';
     container.appendChild(filelist);
-    
+
     // show a file select form
     var fileinput = document.getElementById('browseFile');
     var sendFile = document.getElementById('click');
-    
+
     // send a file
     fileinput.addEventListener('change', function() {
         sendFile.disabled = false;
@@ -68,10 +77,10 @@ window.onload = function(){
         });*/
         filelist.appendChild(item);
     }, false);
-    
-    //fileinput.disabled = 'disabled';    
+
+    //fileinput.disabled = 'disabled';
     //container.appendChild(fileinput);
-    
+
     /*document.getElementById('click').onclick = function(){
         bar.setPercentage(85);
       //bar.style.width = '25%' ;

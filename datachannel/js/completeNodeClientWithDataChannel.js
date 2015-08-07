@@ -4,7 +4,7 @@
 // Opera --> getUserMedia
 // Chrome --> webkitGetUserMedia
 // Firefox --> mozGetUserMedia
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
 							|| navigator.mozGetUserMedia;
 
 // Clean-up function:
@@ -15,6 +15,11 @@ window.onbeforeunload = function(e){
 
 //Datachannel options
 var dataChannelOptions = {reliable: true};
+var firefoxICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
+var googleICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
+var sampleTime = 60000; // one minute
+var sampleCounter = 0;
+var firstTime = true;
 
 // Data channel information
 var sendChannel, receiveChannel;
@@ -49,14 +54,39 @@ var remoteStream;
 var pc;
 
 // Peer Connection ICE protocol configuration (either Firefox or Chrome)
-var pc_config = webrtcDetectedBrowser === 'firefox' ?
+/*var pc_config = webrtcDetectedBrowser === 'firefox' ?
   {'iceServers':[{'url':'stun:23.21.150.121'}]} : // IP address
   {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
-  
+  */
+var pc_config = webrtcDetectedBrowser === 'firefox' ?  firefoxICEServers : googleICEServers;
+
+/* The DTLS handshake is used to establish keying material,
+   algorithms, and parameters for SRTP.
+   Servers that receive an extended hello containing a "use_srtp"
+   extension can agree to use SRTP by including an extension of type
+   "use_srtp", with the chosen protection profile in the extended server
+   hello.  This process is shown below.
+   Client                                               Server
+
+   ClientHello + use_srtp       -------->
+   ServerHello + use_srtp
+   Certificate*
+   ServerKeyExchange*
+   CertificateRequest*
+   <--------      ServerHelloDone
+   Certificate*
+   ClientKeyExchange
+   CertificateVerify*
+   [ChangeCipherSpec]
+   Finished                     -------->
+   [ChangeCipherSpec]
+   <--------             Finished
+   SRTP packets                 <------->      SRTP packets
+*/
 var pc_constraints = {
   'optional': [
-    {'DtlsSrtpKeyAgreement': true}
-  ]};
+                {'DtlsSrtpKeyAgreement': true}
+              ]};
 
 // Session Description Protocol constraints:
 var sdpConstraints = {};
@@ -67,8 +97,8 @@ var room = "Servio";
 // Connect to signalling server
 var socket = io.connect("http://localhost:8181");
 
-/* 
-*   Send 'Create or join' message to singnalling server
+/*
+*   Send 'Create or join' message to signaling server
 */
 if (room !== '') {
   console.log('Create or join room', room);
@@ -76,14 +106,12 @@ if (room !== '') {
 }
 
 // Set getUserMedia constraints
+// We just need DataChannel, therefore video and audio are turned off
 var constraints = {video: false, audio: false};
 
-// From this point on, execution proceeds based on asynchronous events...
-
-/////////////////////////////////////////////
-
+// Asynchronous events
 // getUserMedia() handlers...
-/////////////////////////////////////////////
+//Not used with datachannels, use handleUserMedia2 instead
 function handleUserMedia(stream) {
 	localStream = stream;
 	attachMediaStream(localVideo, stream);
@@ -91,34 +119,30 @@ function handleUserMedia(stream) {
 	sendMessage('got user media');
 }
 
-function handleUserMedia2(stream) {	
+// Send negotiation message to prepare connections
+function handleUserMedia2(stream) {
 	console.log('Adding local fake stream.');
 	sendMessage('got user media');
 }
 
+// Error handler
 function handleUserMediaError(error){
 	console.log('navigator.getUserMedia error: ', error);
 }
-/////////////////////////////////////////////
 
-
-// Server-mediated message exchanging...
-/////////////////////////////////////////////
-
-// 1. Server-->Client...
-/////////////////////////////////////////////
+// <<<<<<<<<< Message exchange through Signaling Server >>>>>>>>>>>>>>
+// 1. Server-->Client
+// <<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // Handle 'created' message coming back from server:
 // this peer is the initiator
 socket.on('created', function (room){
   console.log('Created room ' + room);
   isInitiator = true;
-  
-  // Call getUserMedia()
-  //navigator.getUserMedia(constraints, handleUserMedia, handleUserMediaError);
+
   handleUserMedia2() ;
-  console.log(' <<Flag>> Getting user media with constraints ', constraints);
-  
+  console.log(' Getting user media with constraints ', constraints);
+
   checkAndStart();
 });
 
@@ -141,7 +165,7 @@ socket.on('join', function (room){
 socket.on('joined', function (room){
   console.log('This peer has joined room ' + room);
   isChannelReady = true;
-  
+
   // Call getUserMedia()
   //navigator.getUserMedia(constraints, handleUserMedia, handleUserMediaError);
 	handleUserMedia2() ;
@@ -153,7 +177,7 @@ socket.on('log', function (array){
   console.log.apply(console, array);
 });
 
-// Receive message from the other peer via the signalling server 
+// Receive message from the other peer via the signalling server
 socket.on('message', function (message){
   console.log('Received message:', message);
   if (message === 'got user media') {
@@ -175,8 +199,8 @@ socket.on('message', function (message){
     handleRemoteHangup();
   }
 });
-         
-         
+
+
  // receiving an incoming filetransfer
 socket.on('fileTransfer', function (metadata, receiver) {
     console.log('incoming filetransfer', metadata);
@@ -192,50 +216,24 @@ socket.on('fileTransfer', function (metadata, receiver) {
     span = document.createElement('span');
     span.appendChild(document.createTextNode(metadata.size + ' bytes'));
     item.appendChild(span);
+});
 
-    // create a progress element
-    //var receiveProgress = document.createElement('progress');
-    //receiveProgress.max = metadata.size;
-    //item.appendChild(receiveProgress);
-
-    // hook up receive progress
-    /*receiver.on('progress', function (bytesReceived) {
-        receiveProgress.value = bytesReceived;
-    });
-
-    // get notified when file is done
-    receiver.on('receivedFile', function (file, metadata) {
-        console.log('received file', metadata.name, metadata.size);
-        var href = document.createElement('a');
-        href.href = URL.createObjectURL(file);
-        href.download = metadata.name;
-        href.appendChild(document.createTextNode('download'));
-        item.appendChild(href);
-
-        // close the channel
-        receiver.channel.close();
-    });*/
-
-    //filelist.appendChild(item);
-});         
-             
-////////////////////////////////////////////////
-
+//--------------------------------------------------------------------
 // 2. Client-->Server
-////////////////////////////////////////////////
+//--------------------------------------------------------------------
 // Send message to the other peer via the signalling server
 function sendMessage(message){
   console.log('Sending message: ', message);
   socket.emit('message', message);
 }
-////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////
+//--------------------------------------------------------------------
 // Channel negotiation trigger function
+//--------------------------------------------------------------------
 function checkAndStart() {
   console.log("Before IF " + isStarted + " localStream " + localStream + "  isChannelReady " + isChannelReady);
-  //if (!isStarted && typeof localStream != 'undefined' && isChannelReady) {  
-	if (!isStarted && isChannelReady) { 
+  //if (!isStarted && typeof localStream != 'undefined' && isChannelReady) {
+	if (!isStarted && isChannelReady) {
 	createPeerConnection();
     isStarted = true;
     if (isInitiator) {
@@ -244,29 +242,27 @@ function checkAndStart() {
   }
 }
 
-/////////////////////////////////////////////////////////
-// Peer Connection management...
+//--------------------------------------------------------------------
+// Peer Connection management
+//--------------------------------------------------------------------
 function createPeerConnection() {
   try {
-		
+
     console.log("Creating Peer Connection");
     pc = new RTCPeerConnection(pc_config, pc_constraints);
-    
+
     console.log("Calling pc.addStream(localStream)! Initiator: " + isInitiator);
     //pc.addStream(localStream);
-    
+
     pc.onicecandidate = handleIceCandidate;
     console.log('Created RTCPeerConnnection with:\n' +
                 '  config: \'' + JSON.stringify(pc_config) + '\';\n' +
-                '  constraints: \'' + JSON.stringify(pc_constraints) + '\'.'); 
+                '  constraints: \'' + JSON.stringify(pc_constraints) + '\'.');
   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
     alert('Cannot create RTCPeerConnection object.');
       return;
   }
-
-  //pc.onaddstream = handleRemoteStreamAdded;
-  //pc.onremovestream = handleRemoteStreamRemoved;
 
   if (isInitiator) {
     try {
@@ -280,40 +276,42 @@ function createPeerConnection() {
     sendChannel.onopen = handleSendChannelStateChange;
     sendChannel.onmessage = handleMessage;
     sendChannel.onclose = handleSendChannelStateChange;
-  } else { // Joiner    
+  } else { // Joiner
     pc.ondatachannel = gotReceiveChannel;
   }
 }
 
+//--------------------------------------------------------------------
 // Data channel management
+//--------------------------------------------------------------------
 function sendData() {
   var data = sendTextarea.value;
-  
-  if(isInitiator) 
+
+  if(isInitiator)
       sendChannel.send(data);
-  else 
+  else
       receiveChannel.send(data);
-  
+
     trace('Sent data: ' + data);
 }
 
 function sendDataAuto(data) {
-  
-  if(isInitiator) 
+
+  if(isInitiator)
       sendChannel.send(data);
-  else 
+  else
       receiveChannel.send(data);
-  
+
     trace('Sent data auto: ' + data);
 }
 
+//--------------------------------------------------------------------
 // Sending file
+//--------------------------------------------------------------------
 function sendFileP2P() {
-    
-    var bar = new progress_bar();
-    bar.setPercentage(100);
+
     trace('Sent File Chunk: ' + data);
-    
+
     console.log("Sending file ...");
     var file = fileinput.files[0];
     console.log("Filename to send: " + file.name);
@@ -335,7 +333,7 @@ function sendFileP2P() {
 
     // create a progress element
     var fileSize = file.size;
-    var chunkSize = 60000;       
+    var chunkSize = 60000;
 
     // hook up send progress
     sender.on('progress', function (bytesSent) {
@@ -352,20 +350,21 @@ function sendFileP2P() {
     sender.on('complete', function () {
         // safe to disconnect now
     });
-    //filelist.appendChild(item);    
+    //filelist.appendChild(item);
     //bar.setPercentage(85);
-  
-    
+
+
   var data = file.name;
-  if (isInitiator) 
+  if (isInitiator)
       sendChannel.send(data);
-  else 
+  else
       receiveChannel.send(data);
-     
+
 }
 
-// Handlers...
-
+//--------------------------------------------------------------------
+// Handlers
+//--------------------------------------------------------------------
 function gotReceiveChannel(event) {
   trace('Receive Channel Callback');
   receiveChannel = event.channel;
@@ -374,11 +373,17 @@ function gotReceiveChannel(event) {
   receiveChannel.onclose = handleReceiveChannelStateChange;
 }
 
+//--------------------------------------------------------------------
+// Handle message
+//--------------------------------------------------------------------
 function handleMessage(event) {
   trace('Received message: ' + event.data);
   receiveTextarea.value += event.data + '\n';
 }
 
+//--------------------------------------------------------------------
+// handle Send Channel State Change
+//--------------------------------------------------------------------
 function handleSendChannelStateChange() {
   var readyState = sendChannel.readyState;
   trace('Send channel state is: ' + readyState);
@@ -394,9 +399,13 @@ function handleSendChannelStateChange() {
   }
 }
 
+//--------------------------------------------------------------------
+// handle Receive Channel State Change
+//--------------------------------------------------------------------
 function handleReceiveChannelStateChange() {
   var readyState = receiveChannel.readyState;
   trace('Receive channel state is: ' + readyState);
+
   // If channel ready, enable user's input
   if (readyState == "open") {
 	    dataChannelSend.disabled = false;
@@ -409,7 +418,9 @@ function handleReceiveChannelStateChange() {
 	  }
 }
 
+//--------------------------------------------------------------------
 // ICE candidates management
+//--------------------------------------------------------------------
 function handleIceCandidate(event) {
   console.log('handleIceCandidate event: ', event);
   if (event.candidate) {
@@ -423,33 +434,41 @@ function handleIceCandidate(event) {
   }
 }
 
+//--------------------------------------------------------------------
 // Create Offer
+//--------------------------------------------------------------------
 function doCall() {
   console.log('Creating Offer...');
   pc.createOffer(setLocalAndSendMessage, onSignalingError, sdpConstraints);
 }
 
+//--------------------------------------------------------------------
 // Signalling error handler
+//--------------------------------------------------------------------
 function onSignalingError(error) {
 	console.log('Failed to create signaling message : ' + error.name);
 }
 
+//--------------------------------------------------------------------
 // Create Answer
+//--------------------------------------------------------------------
 function doAnswer() {
   console.log('Sending answer to peer.');
-  pc.createAnswer(setLocalAndSendMessage, onSignalingError, sdpConstraints);  
+  pc.createAnswer(setLocalAndSendMessage, onSignalingError, sdpConstraints);
 }
 
+//--------------------------------------------------------------------
 // Success handler for both createOffer()
 // and createAnswer()
+//--------------------------------------------------------------------
 function setLocalAndSendMessage(sessionDescription) {
   pc.setLocalDescription(sessionDescription);
   sendMessage(sessionDescription);
 }
 
-/////////////////////////////////////////////////////////
+//--------------------------------------------------------------------
 // Remote stream handlers...
-
+//--------------------------------------------------------------------
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
   attachMediaStream(remoteVideo, event.stream);
@@ -457,39 +476,91 @@ function handleRemoteStreamAdded(event) {
   remoteStream = event.stream;
 }
 
+//--------------------------------------------------------------------
+// Handle event when Remote Stream is removed
+//--------------------------------------------------------------------
 function handleRemoteStreamRemoved(event) {
   console.log('Remote stream removed. Event: ', event);
 }
-/////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////
-// Clean-up functions...
 
+//--------------------------------------------------------------------
+// Clean-up functions
+//--------------------------------------------------------------------
 function hangup() {
   console.log('Hanging up.');
   stop();
   sendMessage('bye');
 }
 
+//--------------------------------------------------------------------
+// Remote Session Terminated
+//--------------------------------------------------------------------
 function handleRemoteHangup() {
   console.log('Session terminated.');
   stop();
   isInitiator = false;
 }
 
+//--------------------------------------------------------------------
+// Stopping
+//--------------------------------------------------------------------
 function stop() {
   isStarted = false;
   if (sendChannel) sendChannel.close();
   if (receiveChannel) receiveChannel.close();
-  if (pc) pc.close();  
+  if (pc) pc.close();
   pc = null;
   sendButton.disabled=true;
 }
 
-//Sending data
-setInterval(function () {    
-    var data = "01234567890ABCDEF";
-    sendData();
-}, 1000);
+function getCharacters(nCharacters){
+  var data16 = "0123456789ABCDEF";
+  var strResult = "";
+  var i = 0;
+  for(i=0; i < nCharacters/data16.length; i++){
+    strResult += data16;
+  }
+  console.log("Result length: " + strResult.length);
 
-///////////////////////////////////////////
+  return strResult;
+}
+
+//--------------------------------------------------------------------
+//Sending data
+//--------------------------------------------------------------------
+setInterval(function () {
+    var readyStateSendChannel = "close";
+    var readyStateReceiveChannel = "close";
+    var readyState = "close";
+    var bar = new ProgressBar();
+    var dataToSend = getCharacters(1024);
+    sendTextarea.value = dataToSend;
+
+    if(typeof sendChannel !== 'undefined'){
+      readyStateSendChannel = sendChannel.readyState;
+    }
+    if(typeof receiveChannel !== 'undefined'){
+      readyStateReceiveChannel = receiveChannel.readyState;
+    }
+
+    if(readyStateSendChannel === "open" || readyStateReceiveChannel === "open"){
+      readyState = "open";
+    }
+
+    if(sampleCounter >= sampleTime && firstTime) {
+      firstTime = false;
+      bar.setPercentage(100);
+      hangup();
+    }
+    else {
+      if(readyState === "open") {
+        bar.setPercentage((sampleCounter / sampleTime) * 100);
+        sampleCounter++;
+        console.log(dataToSend);
+        sendData();
+      }
+    }
+}, 1);
+
+//--------------------------------------------------------------------

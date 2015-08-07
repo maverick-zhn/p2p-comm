@@ -17,7 +17,7 @@ var app = http.createServer(function (req, res) {
 }).listen(port);
 
 // Use socket.io JavaScript library for real-time web applications
-// TODO 
+// TODO
 // Use SocketCLuster
 var io = require('socket.io').listen(app);
 var globalChannel = "";
@@ -26,18 +26,18 @@ console.log("Listening on port: [" + port + "]");
 
 // Managing connections on the socket ...
 io.sockets.on('connection', function (socket){
-	
-    	// Handle 'message' messages
+
+    	  // On received message
         socket.on('message', function (message) {
                 log('S --> got message: ', message);
 								console.log("Got Message : " + message + " channel " + globalChannel);
                 // channel-only broadcast...
                 socket.broadcast.to(globalChannel).emit('message', message);
         });
-        
+
         // Handle 'create or join' messages
         socket.on('create or join', function (room) {
-					
+
 					    var namespace = '/';
               var roomName = room;
 							var counter = 0;
@@ -47,30 +47,29 @@ io.sockets.on('connection', function (socket){
 							}
 							console.log("Counter: " + counter);
 							var numClients = counter;
-							
-                console.log('numclients = ' + numClients);                
 
-                log('S --> Room ' + room + ' has ' + numClients + ' client(s)');
-                log('S --> Request to create or join room', room);
+                console.log('numclients = ' + numClients);
+
+                log('Signaling Server --> Room ' + room + ' has ' + numClients + ' client(s)');
+                log('Signaling Server --> Request to create or join room', room);
 								globalChannel = room;
 
-                // First client joining...
+                // First client joining ...
                 if (numClients == 0){
-                        socket.join(room);
-												console.log("Room created [" + room + "]");
-                        socket.emit('created', room);
+                  socket.join(room);
+                  console.log("Room created [" + room + "]");
+                  socket.emit('created', room);
                 } else if (numClients == 1) {
-                // Second client joining...    
-								
-                        io.sockets.in(room).emit('join', room);
-                        socket.join(room);
-												console.log("[Joined]");
-                        socket.emit('joined', room);
+                  // Second client joining...
+                  io.sockets.in(room).emit('join', room);
+                  socket.join(room);
+                  console.log("[Joined]");
+                  socket.emit('joined', room);
                 } else { // max two clients
-                        socket.emit('full', room);
+                  socket.emit('full', room);
                 }
         });
-        
+
         function log(){
             var array = [">>> "];
             for (var i = 0; i < arguments.length; i++) {
