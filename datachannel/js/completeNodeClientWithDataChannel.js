@@ -88,13 +88,19 @@ var pc_constraints = {
                 {'DtlsSrtpKeyAgreement': true}
               ]};
 
+//--------------------------------------------------------------------
 // Session Description Protocol constraints:
+//--------------------------------------------------------------------
 var sdpConstraints = {};
 
+//--------------------------------------------------------------------
 /* room name */
+//--------------------------------------------------------------------
 var room = "Servio";
 
+//--------------------------------------------------------------------
 // Connect to signalling server
+//--------------------------------------------------------------------
 var socket = io.connect("http://localhost:8181");
 
 /*
@@ -105,13 +111,17 @@ if (room !== '') {
   socket.emit('create or join', room);
 }
 
+//--------------------------------------------------------------------
 // Set getUserMedia constraints
 // We just need DataChannel, therefore video and audio are turned off
+//--------------------------------------------------------------------
 var constraints = {video: false, audio: false};
 
+//--------------------------------------------------------------------
 // Asynchronous events
 // getUserMedia() handlers...
 //Not used with datachannels, use handleUserMedia2 instead
+//--------------------------------------------------------------------
 function handleUserMedia(stream) {
 	localStream = stream;
 	attachMediaStream(localVideo, stream);
@@ -119,23 +129,29 @@ function handleUserMedia(stream) {
 	sendMessage('got user media');
 }
 
+//--------------------------------------------------------------------
 // Send negotiation message to prepare connections
+//--------------------------------------------------------------------
 function handleUserMedia2(stream) {
 	console.log('Adding local fake stream.');
 	sendMessage('got user media');
 }
 
+//--------------------------------------------------------------------
 // Error handler
+//--------------------------------------------------------------------
 function handleUserMediaError(error){
 	console.log('navigator.getUserMedia error: ', error);
 }
 
 // <<<<<<<<<< Message exchange through Signaling Server >>>>>>>>>>>>>>
 // 1. Server-->Client
-// <<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//--------------------------------------------------------------------
 
+//--------------------------------------------------------------------
 // Handle 'created' message coming back from server:
 // this peer is the initiator
+//--------------------------------------------------------------------
 socket.on('created', function (room){
   console.log('Created room ' + room);
   isInitiator = true;
@@ -146,22 +162,27 @@ socket.on('created', function (room){
   checkAndStart();
 });
 
+//--------------------------------------------------------------------
 // Handle 'full' message coming back from server:
-// this peer arrived too late :-(
+//--------------------------------------------------------------------
 socket.on('full', function (room){
   console.log('Room ' + room + ' is full');
 });
 
+//--------------------------------------------------------------------
 // Handle 'join' message coming back from server:
 // another peer is joining the channel
+//--------------------------------------------------------------------
 socket.on('join', function (room){
   console.log('Another peer made a request to join room ' + room);
   console.log('This peer is the initiator of room ' + room + '!');
   isChannelReady = true;
 });
 
+//--------------------------------------------------------------------
 // Handle 'joined' message coming back from server:
 // this is the second peer joining the channel
+//--------------------------------------------------------------------
 socket.on('joined', function (room){
   console.log('This peer has joined room ' + room);
   isChannelReady = true;
@@ -172,12 +193,16 @@ socket.on('joined', function (room){
   console.log(' <<2>>Not Getting user media with constraints ', constraints);
 });
 
-// Server-sent log message...
+//--------------------------------------------------------------------
+// Server-sent log message
+//--------------------------------------------------------------------
 socket.on('log', function (array){
   console.log.apply(console, array);
 });
 
+//--------------------------------------------------------------------
 // Receive message from the other peer via the signalling server
+//--------------------------------------------------------------------
 socket.on('message', function (message){
   console.log('Received message:', message);
   if (message === 'got user media') {
@@ -200,8 +225,9 @@ socket.on('message', function (message){
   }
 });
 
-
- // receiving an incoming filetransfer
+//--------------------------------------------------------------------
+// receiving an incoming filetransfer
+//--------------------------------------------------------------------
 socket.on('fileTransfer', function (metadata, receiver) {
     console.log('incoming filetransfer', metadata);
     var item = document.createElement('li');
