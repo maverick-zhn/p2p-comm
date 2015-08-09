@@ -23,12 +23,9 @@ $ npm install --global p2p-comm
 $ p2p-comm --help
 ```
 
-
-
 ## License
 
 MIT © [Servio Palacios](http://www.maverick-z.com)
-
 
 [npm-image]: https://badge.fury.io/js/p2p-comm.svg
 [npm-url]: https://npmjs.org/package/p2p-comm
@@ -48,9 +45,9 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * ~~Implement Basic data channel communication between peers~~
 * Implement a data channel communication between peers using nodejs
 * ~~connect() method implementation using EasyRTC~~
-* Implement connect method in library
-* Implement send method in library
-* Implement receive method in library
+* ~~Implement connect method~~
+* ~~Implement send method~~
+* ~~Implement receive method~~
 * Design and Implement Network Topology Actualization Algorithm
 * Create Benchmarking Module to measure the effectiveness of new updated topology
 * Document progress up to this checkpoint
