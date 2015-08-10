@@ -17,7 +17,7 @@ window.onbeforeunload = function(e){
 var dataChannelOptions = {reliable: true};
 var firefoxICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
 var googleICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
-var sampleTime = 60000; // one minute
+var sampleTime = 6000; // one minute
 var sampleCounter = 0;
 var firstTime = true;
 
@@ -101,7 +101,7 @@ var room = "Servio";
 //--------------------------------------------------------------------
 // Connect to signalling server
 //--------------------------------------------------------------------
-var socket = io.connect("http://localhost:8181");
+var socket = io.connect("http://128.10.120.157:8181");
 
 /*
 *   Send 'Create or join' message to signaling server
@@ -587,6 +587,6 @@ setInterval(function () {
         sendData();
       }
     }
-}, 1);
+}, 10);
 
 //--------------------------------------------------------------------
