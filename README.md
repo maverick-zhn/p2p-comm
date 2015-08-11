@@ -130,6 +130,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * [Reserving Bandwidth] https://www.webrtcexample.com/blog/?go=all/reserving-bandwidth/
 * https://webrtchacks.com/
 * https://github.com/otalk/filetransfer/blob/master/filetransfer.js
+* https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel
 
 ###Issues with WebRTC and EasyRTC
 * https://groups.google.com/forum/#!topic/easyrtc/XMsCpDMgaX4
