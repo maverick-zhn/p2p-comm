@@ -17,7 +17,7 @@ window.onbeforeunload = function(e){
 var dataChannelOptions = {reliable: true};
 var firefoxICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
 var googleICEServers = {'iceServers':[{'url':'stun:23.21.150.121'}]};
-var sampleTime = 6000; // one minute
+var sampleTime = 500; // one minute
 var sampleCounter = 0;
 var firstTime = true;
 
@@ -276,6 +276,8 @@ function createPeerConnection() {
 
     console.log("Creating Peer Connection");
     pc = new RTCPeerConnection(pc_config, pc_constraints);
+		var identity = pc._peers;
+		console.log("Identity: " + identity);
 
     console.log("Calling pc.addStream(localStream)! Initiator: " + isInitiator);
     //pc.addStream(localStream);
@@ -287,7 +289,7 @@ function createPeerConnection() {
   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
     alert('Cannot create RTCPeerConnection object.');
-      return;
+    return;
   }
 
   if (isInitiator) {
@@ -547,7 +549,7 @@ function getCharacters(nCharacters){
   for(i=0; i < nCharacters/data16.length; i++){
     strResult += data16;
   }
-  console.log("Result length: " + strResult.length);
+  //console.log("Result length: " + strResult.length);
 
   return strResult;
 }
@@ -561,6 +563,7 @@ setInterval(function () {
     var readyState = "close";
     var bar = new ProgressBar();
     var dataToSend = getCharacters(1024);
+
     sendTextarea.value = dataToSend;
 
     if(typeof sendChannel !== 'undefined'){
