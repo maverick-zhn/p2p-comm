@@ -113,6 +113,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://www.sitepoint.com/understanding-module-exports-exports-node-js/
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 * http://www.linfo.org/rule_of_silence.html
+* http://stackoverflow.com/questions/29387286/how-to-communicate-with-socket-cluster-server-with-python-as-client
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
