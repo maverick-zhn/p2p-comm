@@ -101,7 +101,7 @@ var room = "Servio";
 //--------------------------------------------------------------------
 // Connect to signalling server
 //--------------------------------------------------------------------
-var socket = io.connect("http://128.10.120.157:8181");
+var socket = io.connect("http://192.168.2.3:8181");
 
 /*
 *   Send 'Create or join' message to signaling server
@@ -273,14 +273,8 @@ function checkAndStart() {
 //--------------------------------------------------------------------
 function createPeerConnection() {
   try {
-
-    console.log("Creating Peer Connection");
+    console.log("<<<<Creating Peer Connection>>>>");
     pc = new RTCPeerConnection(pc_config, pc_constraints);
-		var identity = pc._peers;
-		console.log("Identity: " + identity);
-
-    console.log("Calling pc.addStream(localStream)! Initiator: " + isInitiator);
-    //pc.addStream(localStream);
 
     pc.onicecandidate = handleIceCandidate;
     console.log('Created RTCPeerConnnection with:\n' +
@@ -288,7 +282,7 @@ function createPeerConnection() {
                 '  constraints: \'' + JSON.stringify(pc_constraints) + '\'.');
   } catch (e) {
     console.log('Failed to create PeerConnection, exception: ' + e.message);
-    alert('Cannot create RTCPeerConnection object.');
+    //alert('Cannot create RTCPeerConnection object.');
     return;
   }
 
@@ -296,7 +290,8 @@ function createPeerConnection() {
     try {
       // Create a reliable data channel
       sendChannel = pc.createDataChannel("sendDataChannel", dataChannelOptions);
-      trace('Created send data channel');
+      console.log('Created send data channel id ' + sendChannel.id + " DataChannel " + sendChannel.label);
+
     } catch (e) {
       alert('Failed to create data channel. ');
       trace('createDataChannel() failed with exception: ' + e.message);
@@ -320,7 +315,7 @@ function sendData() {
   else
       receiveChannel.send(data);
 
-    trace('Sent data: ' + data);
+    //trace('Sent data: ' + data);
 }
 
 function sendDataAuto(data) {
@@ -334,10 +329,9 @@ function sendDataAuto(data) {
 }
 
 //--------------------------------------------------------------------
-// Sending file
+// Sending file Peer to Peer
 //--------------------------------------------------------------------
 function sendFileP2P() {
-
     trace('Sent File Chunk: ' + data);
 
     console.log("Sending file ...");
@@ -381,13 +375,11 @@ function sendFileP2P() {
     //filelist.appendChild(item);
     //bar.setPercentage(85);
 
-
   var data = file.name;
   if (isInitiator)
       sendChannel.send(data);
   else
       receiveChannel.send(data);
-
 }
 
 //--------------------------------------------------------------------
@@ -405,8 +397,8 @@ function gotReceiveChannel(event) {
 // Handle message
 //--------------------------------------------------------------------
 function handleMessage(event) {
-  trace('Received message: ' + event.data);
-  receiveTextarea.value += event.data + '\n';
+  //trace('Received message: ' + event.data);
+  //receiveTextarea.value += event.data + '\n';
 }
 
 //--------------------------------------------------------------------
@@ -471,7 +463,7 @@ function doCall() {
 }
 
 //--------------------------------------------------------------------
-// Signalling error handler
+// Signaling error handler
 //--------------------------------------------------------------------
 function onSignalingError(error) {
 	console.log('Failed to create signaling message : ' + error.name);
@@ -550,7 +542,6 @@ function getCharacters(nCharacters){
     strResult += data16;
   }
   //console.log("Result length: " + strResult.length);
-
   return strResult;
 }
 
