@@ -100,8 +100,10 @@ var room = "Servio";
 
 //--------------------------------------------------------------------
 // Connect to signalling server
+// Office: 128.10.120.157
+// Home: 192.168.2.3
 //--------------------------------------------------------------------
-var socket = io.connect("http://192.168.2.3:8181");
+var socket = io.connect("http://localhost:8181");
 
 /*
 *   Send 'Create or join' message to signaling server
@@ -293,7 +295,7 @@ function createPeerConnection() {
       console.log('Created send data channel id ' + sendChannel.id + " DataChannel " + sendChannel.label);
 
     } catch (e) {
-      alert('Failed to create data channel. ');
+      //alert('Failed to create data channel. ');
       trace('createDataChannel() failed with exception: ' + e.message);
     }
     sendChannel.onopen = handleSendChannelStateChange;
