@@ -63,6 +63,13 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Create module, document module, upload to npm
 * Write this part of the paper
 * Verify with Writing Lab
+* 
+
+###TODO  
+* RTCIceServer.url is deprecated! Use urls instead. 
+* Use of getPreventDefault() is deprecated.  Use defaultPrevented instead.
+
+
 
 ###Signaling Server
 * http://blog.sococo.com/product/news-and-events/webrtc-signaling-here-be-dragons.html
