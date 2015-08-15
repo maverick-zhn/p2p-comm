@@ -48,8 +48,8 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * ~~Implement connect method~~
 * ~~Implement send method~~
 * ~~Implement receive method~~
-* ~~Implement dataChannel on client Javascript App
-* ~~Implement Signaling Server on SocketCluster
+* ~~Implement dataChannel on client Javascript App~~
+* ~~Implement Signaling Server on SocketCluster~~
 * Design and Implement Network Topology Actualization Algorithm
 * Create Benchmarking Module to measure the effectiveness of new updated topology
 * Document progress up to this checkpoint
@@ -65,13 +65,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * Create module, document module, upload to npm
 * Write this part of the paper
 * Verify with Writing Lab
-* 
 
 ###TODO  
 * RTCIceServer.url is deprecated! Use urls instead. 
 * Use of getPreventDefault() is deprecated.  Use defaultPrevented instead.
-
-
 
 ###Signaling Server
 * http://blog.sococo.com/product/news-and-events/webrtc-signaling-here-be-dragons.html
@@ -153,4 +150,3 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###Network and Javascript assesments
 * http://code.jpardanaud.com/speedtest/
 * https://github.com/ddsol/speedtest.net
-
