@@ -48,6 +48,8 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * ~~Implement connect method~~
 * ~~Implement send method~~
 * ~~Implement receive method~~
+* ~~Implement dataChannel on client Javascript App
+* ~~Implement Signaling Server on SocketCluster
 * Design and Implement Network Topology Actualization Algorithm
 * Create Benchmarking Module to measure the effectiveness of new updated topology
 * Document progress up to this checkpoint
