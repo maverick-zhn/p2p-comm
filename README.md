@@ -140,6 +140,9 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel
 * [BUGS FIXED] https://bugzilla.mozilla.org/show_bug.cgi?id=1064247
 
+###Security
+* https://webrtc-security.github.io/
+
 ###Issues with WebRTC and EasyRTC
 * https://groups.google.com/forum/#!topic/easyrtc/XMsCpDMgaX4
 
