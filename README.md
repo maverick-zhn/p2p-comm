@@ -106,6 +106,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://phantomjs.org/
 * http://dcg.ethz.ch/lectures/podc_allstars/
 * https://google.github.io/lovefield/
+* http://cci.drexel.edu/bigdata/bigdata2014/big-data-stream-mining-tutorial.pdf
 
 ###Javascript
 * https://www.udemy.com/understand-javascript/#/lecture/2573912
