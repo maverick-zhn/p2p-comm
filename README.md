@@ -105,6 +105,7 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://oboejs.com/why
 * http://phantomjs.org/
 * http://dcg.ethz.ch/lectures/podc_allstars/
+* https://google.github.io/lovefield/
 
 ###Javascript
 * https://www.udemy.com/understand-javascript/#/lecture/2573912
