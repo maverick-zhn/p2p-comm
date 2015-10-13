@@ -107,6 +107,8 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://dcg.ethz.ch/lectures/podc_allstars/
 * https://google.github.io/lovefield/
 * http://cci.drexel.edu/bigdata/bigdata2014/big-data-stream-mining-tutorial.pdf
+* https://cwiki.apache.org/confluence/display/FLINK/Stateful+Stream+Processing
+* https://docs.google.com/document/d/15Ome_2bAzARNeZMJLkUSoLWn-kPISzW0N2yLOXz4Zvw/edit#heading=h.3byjyuxpqscc
 
 ###Javascript
 * https://www.udemy.com/understand-javascript/#/lecture/2573912
