@@ -159,3 +159,6 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 ###Network and Javascript assesments
 * http://code.jpardanaud.com/speedtest/
 * https://github.com/ddsol/speedtest.net
+
+###Trello
+https://trello.com/b/9vMdqkI1/trueno-io
