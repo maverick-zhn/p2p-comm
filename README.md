@@ -125,6 +125,8 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 * http://www.linfo.org/rule_of_silence.html
 * http://stackoverflow.com/questions/29387286/how-to-communicate-with-socket-cluster-server-with-python-as-client
+* http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/
+* http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
