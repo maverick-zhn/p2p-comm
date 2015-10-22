@@ -144,6 +144,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * https://github.com/otalk/filetransfer/blob/master/filetransfer.js
 * https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel
 * [BUGS FIXED] https://bugzilla.mozilla.org/show_bug.cgi?id=1064247
+* https://fosterelli.co/getting-started-with-webrtc-data-channels.html
+* https://simplewebrtc.com/notsosimple.html
+* http://peerjs.com/
+* https://simplewebrtc.com/
 
 ###Security
 * https://webrtc-security.github.io/
