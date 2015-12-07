@@ -170,3 +170,5 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 https://trello.com/b/9vMdqkI1/trueno-io
 
 https://www.usenix.org/conference/osdi14/technical-sessions
+http://riteshkr.com/embed.js/
+https://github.com/mindeavor/es-pipeline-operator
