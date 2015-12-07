@@ -168,3 +168,5 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 
 ###Trello
 https://trello.com/b/9vMdqkI1/trueno-io
+
+https://www.usenix.org/conference/osdi14/technical-sessions
