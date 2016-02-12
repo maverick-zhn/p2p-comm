@@ -127,6 +127,10 @@ NodeJS Communication Manager, Peer to Peer Basic communication
 * http://stackoverflow.com/questions/29387286/how-to-communicate-with-socket-cluster-server-with-python-as-client
 * http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/
 * http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/
+* http://www.javascriptkata.com/2007/03/29/how-to-use-javascript-hashes/
+* https://webrtc.github.io/samples/src/content/datachannel/filetransfer/
+* http://peerjs.com/docs/#api
+* http://rundeck.org
 
 ###Code, Stilying
 * http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Internet_Explorer_s_Conditional_Comments
